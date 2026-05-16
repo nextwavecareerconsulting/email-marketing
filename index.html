@@ -596,9 +596,9 @@ Most professionals I talk to aren't stuck because they're unqualified. They're s
 
 Here's what's been moving the needle for clients lately:
 
-→ Reframing your LinkedIn headline around outcomes, not job titles
-→ Getting specific with your "tell me about yourself" -- less history, more direction
-→ Building a short list of target companies instead of spray-and-pray applying
+-> Reframing your LinkedIn headline around outcomes, not job titles
+-> Getting specific with your "tell me about yourself" -- less history, more direction
+-> Building a short list of target companies instead of spray-and-pray applying
 
 SOMETHING TO SIT WITH
 
@@ -630,16 +630,16 @@ I'm opening up 5 spots for private 1:1 coaching this month.
 
 WHO THIS IS FOR
 
-→ Mid-career professionals who feel stuck or underpaid
-→ Anyone navigating a job search, pivot, or burnout
-→ Leaders ready to move fast with structure and accountability
+-> Mid-career professionals who feel stuck or underpaid
+-> Anyone navigating a job search, pivot, or burnout
+-> Leaders ready to move fast with structure and accountability
 
 WHAT WE'D BUILD TOGETHER
 
-→ A clear direction and decision framework for your next move
-→ A resume + LinkedIn that positions you at the right level
-→ Interview prep that makes you feel structured, confident, repeatable
-→ Negotiation support so you land strong and get paid what you're worth
+-> A clear direction and decision framework for your next move
+-> A resume + LinkedIn that positions you at the right level
+-> Interview prep that makes you feel structured, confident, repeatable
+-> Negotiation support so you land strong and get paid what you're worth
 
 THE DETAILS
 
@@ -665,9 +665,9 @@ Over the next few weeks I'll share the strategies, frameworks, and mindset shift
 
 To kick things off, a few things that will help you right now:
 
-→ Watch the 5-minute training: nextwavecareerconsulting.com/training
-→ Book a free strategy call: nextwavecareerconsulting.com/strategy-call
-→ Follow along on Instagram: @nextwavewithmike
+-> Watch the 5-minute training: nextwavecareerconsulting.com/training
+-> Book a free strategy call: nextwavecareerconsulting.com/strategy-call
+-> Follow along on Instagram: @nextwavewithmike
 
 One question to start: what's the #1 thing holding your career back right now?
 
@@ -685,18 +685,18 @@ A live workshop for mid-career professionals ready to move with clarity and conf
 
 ---
 
-📅 Date: Thursday, May 22
-🕛 Time: 12:00 PM PT
-📍 Location: Online (link sent on registration)
+ Date: Thursday, May 22
+ Time: 12:00 PM PT
+ Location: Online (link sent on registration)
 
 ---
 
 WHAT YOU'LL WALK AWAY WITH
 
-→ The exact framework I use with 1:1 clients to land stronger offers
-→ Why most job searches stall -- and how to fix it fast
-→ How to communicate your value in a way hiring managers instantly "get"
-→ Negotiation fundamentals that get you paid what you're worth
+-> The exact framework I use with 1:1 clients to land stronger offers
+-> Why most job searches stall -- and how to fix it fast
+-> How to communicate your value in a way hiring managers instantly "get"
+-> Negotiation fundamentals that get you paid what you're worth
 
 Spots are limited to keep it focused and interactive.
 
@@ -720,34 +720,45 @@ function toast(msg){const t=document.getElementById('toast');document.getElement
 function upPrev(){
   document.getElementById('psub').textContent=document.getElementById('csub').value||'Your subject line will appear here';
   document.getElementById('ppv').textContent=document.getElementById('cpv').value||'Preview text appears here';
-  const raw=document.getElementById('cbd').value;
+  var raw=document.getElementById('cbd').value;
   if(!raw){document.getElementById('pbd-rendered').innerHTML='<p style="color:#888;font-style:italic">Your email body will appear here as you type above...</p>';return}
-  // Convert plain text to styled HTML paragraphs
-  const lines=raw.split('\n');
-  let html='';
-  lines.forEach(line=>{
-    const t=line.trim();
-    if(!t){html+='<div style="height:10px"></div>';return}
-    // CTA button line
-    if(t.startsWith('[BUTTON:')&&t.endsWith(']')){
-      const label=t.slice(8,-1);
-      html+=`<div style="text-align:center;margin:16px 0"><a style="display:inline-block;background:#1a2e4a;color:#fff;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;padding:12px 28px;border-radius:4px;text-decoration:none;letter-spacing:0.04em">${label}</a></div>`;return;
+  var lines=raw.split('\n');
+  var html='';
+  var navy='#1a2e4a';
+  var body='#2c2c2a';
+  for(var i=0;i<lines.length;i++){
+    var t=lines[i].trim();
+    if(!t){html+='<div style="height:10px"></div>';continue}
+    if(t.indexOf('[BUTTON:')=== 0&&t.charAt(t.length-1)===']'){
+      var label=t.slice(8,t.length-1);
+      html+='<div style="text-align:center;margin:16px 0"><span style="display:inline-block;background:'+navy+';color:#fff;font-size:13px;font-weight:600;padding:12px 28px;border-radius:4px;letter-spacing:0.04em">'+label+'</span></div>';
+      continue;
     }
-    // Arrow list items
-    if(t.startsWith('→')){html+=`<div style="display:flex;gap:8px;margin-bottom:4px;font-size:13.5px;color:#2c2c2a"><span style="color:#1a2e4a;font-weight:600;flex-shrink:0">→</span><span>${t.slice(1).trim()}</span></div>`;return}
-    // Bullet list items
-    if(t.startsWith('•')){html+=`<div style="display:flex;gap:8px;margin-bottom:4px;font-size:13.5px;color:#2c2c2a"><span style="color:#1a2e4a;flex-shrink:0">•</span><span>${t.slice(1).trim()}</span></div>`;return}
-    // Numbered items
-    if(/^\d+\./.test(t)){html+=`<div style="display:flex;gap:8px;margin-bottom:4px;font-size:13.5px;color:#2c2c2a"><span style="color:#1a2e4a;font-weight:600;flex-shrink:0;min-width:16px">${t.match(/^\d+/)[0]}.</span><span>${t.replace(/^\d+\.\s*/,'')}</span></div>`;return}
-    // Divider
-    if(t==='---'){html+=`<div style="border-top:1px solid #e8e4dc;margin:14px 0"></div>`;return}
-    // Section heading (ALL CAPS or ends with :)
-    if(t===t.toUpperCase()&&t.length>3&&!/[@.[\]$]/.test(t)){html+=`<div style="font-family:'Marcellus',Georgia,serif;font-size:16px;color:#1a2e4a;margin:14px 0 6px">${t}</div>`;return}
-    // Sign-off (short lines at end like "Sarah" or "Mike")
-    if(t.length<20&&!t.includes(' ')&&lines.indexOf(line)>lines.length-5){html+=`<div style="font-family:'Marcellus',Georgia,serif;font-size:15px;color:#1a2e4a;margin-top:8px">${t}</div>`;return}
-    // Default paragraph
-    html+=`<p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#2c2c2a">${t}</p>`;
-  });
+    if(t.indexOf('->')=== 0){
+      html+='<div style="display:flex;gap:8px;margin-bottom:5px;font-size:13.5px;color:'+body+'"><span style="color:'+navy+';font-weight:700;flex-shrink:0">-></span><span>'+t.slice(2).trim()+'</span></div>';
+      continue;
+    }
+    if(t.charAt(0)==='*'&&t.charAt(1)===' '){
+      html+='<div style="display:flex;gap:8px;margin-bottom:5px;font-size:13.5px;color:'+body+'"><span style="color:'+navy+';flex-shrink:0">&#8226;</span><span>'+t.slice(2).trim()+'</span></div>';
+      continue;
+    }
+    if(/^\d+\./.test(t)){
+      var num=t.match(/^\d+/)[0];
+      var rest=t.replace(/^\d+\.\s*/,'');
+      html+='<div style="display:flex;gap:8px;margin-bottom:5px;font-size:13.5px;color:'+body+'"><span style="color:'+navy+';font-weight:700;flex-shrink:0;min-width:18px">'+num+'.</span><span>'+rest+'</span></div>';
+      continue;
+    }
+    if(t==='---'){html+='<div style="border-top:1px solid #e8e4dc;margin:14px 0"></div>';continue}
+    if(t===t.toUpperCase()&&t.length>3&&t.indexOf('@')<0&&t.indexOf('.')<0){
+      html+='<div style="font-family:Marcellus,Georgia,serif;font-size:15px;color:'+navy+';margin:14px 0 6px;font-weight:400">'+t+'</div>';
+      continue;
+    }
+    if(t.length<20&&t.indexOf(' ')<0&&i>lines.length-5){
+      html+='<div style="font-family:Marcellus,Georgia,serif;font-size:15px;color:'+navy+';margin-top:10px">'+t+'</div>';
+      continue;
+    }
+    html+='<p style="margin:0 0 9px;font-size:13.5px;line-height:1.8;color:'+body+'">'+t+'</p>';
+  }
   document.getElementById('pbd-rendered').innerHTML=html;
 }
 function at(k){const t=tmpls[k];document.getElementById('csub').value=t.s;document.getElementById('cbd').value=t.b;upPrev();toast('Template applied!')}
