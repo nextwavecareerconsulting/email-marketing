@@ -586,9 +586,9 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
 const subs=[];const camps=[];let logoUrl=null;
 
 const tmpls={
-newsletter:{s:'Career clarity, in real time — your monthly digest',b:`Hi [FIRST_NAME],
+newsletter:{s:'Career clarity, in real time -- your monthly digest',b:`Hi [FIRST_NAME],
 
-Here's what I've been thinking about this month — and what my clients are working through right now.
+Here's what I've been thinking about this month -- and what my clients are working through right now.
 
 THIS MONTH'S FOCUS
 
@@ -597,14 +597,14 @@ Most professionals I talk to aren't stuck because they're unqualified. They're s
 Here's what's been moving the needle for clients lately:
 
 → Reframing your LinkedIn headline around outcomes, not job titles
-→ Getting specific with your "tell me about yourself" — less history, more direction
+→ Getting specific with your "tell me about yourself" -- less history, more direction
 → Building a short list of target companies instead of spray-and-pray applying
 
 SOMETHING TO SIT WITH
 
 You're allowed to want more from your career, and you're capable of getting it.
 
-If any of this resonates, hit reply — I read every message personally.
+If any of this resonates, hit reply -- I read every message personally.
 
 To your next wave,
 Mike
@@ -614,17 +614,17 @@ tips:{s:'5 things I'd tell every job seeker right now',b:`Hi [FIRST_NAME],
 
 No generic advice today. Here are 5 things that are actually working for my clients right now:
 
-1. Lead with outcomes, not responsibilities — hiring managers hire results, not job descriptions
-2. Your LinkedIn headline is your first interview — make it earn attention
-3. Network before you need to — one "thinking of you" message a week compounds fast
-4. Track your wins weekly — it's your secret weapon in interviews and negotiations
-5. "Let me think about that" is a complete sentence — use it before saying yes to anything
+1. Lead with outcomes, not responsibilities -- hiring managers hire results, not job descriptions
+2. Your LinkedIn headline is your first interview -- make it earn attention
+3. Network before you need to -- one "thinking of you" message a week compounds fast
+4. Track your wins weekly -- it's your secret weapon in interviews and negotiations
+5. "Let me think about that" is a complete sentence -- use it before saying yes to anything
 
-Which of these hits closest to home? Hit reply and tell me — I read every one.
+Which of these hits closest to home? Hit reply and tell me -- I read every one.
 
 To your next wave,
 Mike`},
-promo:{s:'I'm opening 5 spots — here's what we'd work on together',b:`Hi [FIRST_NAME],
+promo:{s:'I'm opening 5 spots -- here's what we'd work on together',b:`Hi [FIRST_NAME],
 
 I'm opening up 5 spots for private 1:1 coaching this month.
 
@@ -653,15 +653,15 @@ Only 5 spots available. I close enrollment once they're filled.
 
 To your next wave,
 Mike`},
-welcome:{s:"You're in — here's where to start",b:`Hi [FIRST_NAME],
+welcome:{s:"You're in -- here's where to start",b:`Hi [FIRST_NAME],
 
 Really glad you're here.
 
-I'm Mike — a former Fortune 500 recruiter who spent 12 years hiring for teams at Microsoft, Redfin, and Pacific Life. Now I coach mid-career professionals who are great at what they do, but not great at talking about what they do.
+I'm Mike -- a former Fortune 500 recruiter who spent 12 years hiring for teams at Microsoft, Redfin, and Pacific Life. Now I coach mid-career professionals who are great at what they do, but not great at talking about what they do.
 
 That's exactly what we fix.
 
-Over the next few weeks I'll share the strategies, frameworks, and mindset shifts that actually move careers forward — no fluff, no generic advice.
+Over the next few weeks I'll share the strategies, frameworks, and mindset shifts that actually move careers forward -- no fluff, no generic advice.
 
 To kick things off, a few things that will help you right now:
 
@@ -671,11 +671,11 @@ To kick things off, a few things that will help you right now:
 
 One question to start: what's the #1 thing holding your career back right now?
 
-Hit reply — I read every message personally.
+Hit reply -- I read every message personally.
 
 To your next wave,
 Mike`},
-webinar:{s:'Join me live — how to get hired in 90 days',b:`Hi [FIRST_NAME],
+webinar:{s:'Join me live -- how to get hired in 90 days',b:`Hi [FIRST_NAME],
 
 I'm hosting a free live training and I'd love for you to join.
 
@@ -694,13 +694,13 @@ A live workshop for mid-career professionals ready to move with clarity and conf
 WHAT YOU'LL WALK AWAY WITH
 
 → The exact framework I use with 1:1 clients to land stronger offers
-→ Why most job searches stall — and how to fix it fast
+→ Why most job searches stall -- and how to fix it fast
 → How to communicate your value in a way hiring managers instantly "get"
 → Negotiation fundamentals that get you paid what you're worth
 
 Spots are limited to keep it focused and interactive.
 
-[BUTTON:Save Your Spot — It's Free]
+[BUTTON:Save Your Spot -- It's Free]
 
 To your next wave,
 Mike`}
@@ -752,11 +752,11 @@ function upPrev(){
 }
 function at(k){const t=tmpls[k];document.getElementById('csub').value=t.s;document.getElementById('cbd').value=t.b;upPrev();toast('Template applied!')}
 function ut(k){sp('compose',ni(3));setTimeout(()=>at(k),80)}
-function saveDraft(){const n=document.getElementById('cn').value;if(!n){toast('Please give your campaign a name first');return}camps.push({name:n,seg:document.getElementById('cseg').value,date:'—',open:'—',clicks:'—',st:'draft'});toast('Draft saved: '+n)}
+function saveDraft(){const n=document.getElementById('cn').value;if(!n){toast('Please give your campaign a name first');return}camps.push({name:n,seg:document.getElementById('cseg').value,date:'--',open:'--',clicks:'--',st:'draft'});toast('Draft saved: '+n)}
 function sendCamp(){
   const n=document.getElementById('cn').value,s=document.getElementById('csub').value;
   if(!n||!s){toast('Please add a campaign name and subject line');return}
-  camps.push({name:n,seg:document.getElementById('cseg').value,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),open:'—',clicks:'—',st:'sent'});
+  camps.push({name:n,seg:document.getElementById('cseg').value,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'}),open:'--',clicks:'--',st:'sent'});
   toast('Campaign sent! Subscribers will receive it shortly.');
   ['cn','csub','cbd','cpv'].forEach(id=>document.getElementById(id).value='');
   upPrev();
@@ -794,9 +794,9 @@ function hCSV(input){
     const headers=lines[0].split(',').map(h=>h.trim().toLowerCase());
     const data=lines.slice(1);
     const prev=data.slice(0,5);
-    let html=`<div style="margin-top:14px"><div class="st">${data.length} subscribers found — preview (first ${Math.min(5,data.length)} rows)</div><div class="it" style="overflow-x:auto"><table class="tbl" style="table-layout:auto"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${prev.map(row=>`<tr>${row.split(',').map(c=>`<td>${c.trim()}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-p" onclick="impSubs(${JSON.stringify(data)},${JSON.stringify(headers)})"><i class="ti ti-upload"></i>Import all ${data.length} subscribers</button><button class="btn" onclick="document.getElementById('csv-prev').innerHTML=''">Clear</button></div></div>`;
+    let html=`<div style="margin-top:14px"><div class="st">${data.length} subscribers found -- preview (first ${Math.min(5,data.length)} rows)</div><div class="it" style="overflow-x:auto"><table class="tbl" style="table-layout:auto"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${prev.map(row=>`<tr>${row.split(',').map(c=>`<td>${c.trim()}</td>`).join('')}</tr>`).join('')}</tbody></table></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-p" onclick="impSubs(${JSON.stringify(data)},${JSON.stringify(headers)})"><i class="ti ti-upload"></i>Import all ${data.length} subscribers</button><button class="btn" onclick="document.getElementById('csv-prev').innerHTML=''">Clear</button></div></div>`;
     document.getElementById('csv-prev').innerHTML=html;
-    toast('CSV loaded — review and confirm import below');
+    toast('CSV loaded -- review and confirm import below');
   };
   r.readAsText(input.files[0]);
 }
@@ -831,7 +831,7 @@ function pCol(role,hex,el){
   document.getElementById('pal-'+role).style.background=hex;
   if(role==='primary'){
     document.documentElement.style.setProperty('--blue',hex);
-    // darken for hover — just use hex directly, CSS handles it
+    // darken for hover -- just use hex directly, CSS handles it
     document.getElementById('hp-lg').style.background=logoUrl?'transparent':hex;
     document.getElementById('hp').style.borderBottomColor=hex;
     document.getElementById('plb').style.background=logoUrl?'transparent':hex;
