@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CareerMail — Email Marketing Platform</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500;600&display=swap"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -15,11 +18,13 @@
   --g50:#F7F6F3;--g100:#EEECE8;--g200:#D3D1C7;--g400:#888780;--g600:#5F5E5A;--g800:#2C2C2A;
   --bd:rgba(0,0,0,0.1);--bdm:rgba(0,0,0,0.18);
   --r-sm:6px;--r-md:8px;--r-lg:12px;
-  --ff:'Segoe UI',system-ui,sans-serif;
+  --ff:'Montserrat',system-ui,sans-serif;
+  --fh:'Marcellus',Georgia,serif;
   --bg:#fff;--bg2:#F7F6F3;--bg3:#EEECE8;
   --tx:#1a1a18;--tx2:#5F5E5A;--tx3:#888780;
 }
 body{font-family:var(--ff);color:var(--tx);background:var(--bg);font-size:14px}
+h1,h2,h3,.sb-title,.ep-bz,.mv-v,.empty-t,.tpl-nm,.br-v{font-family:var(--fh)}
 .app{display:flex;height:100vh;overflow:hidden}
 .sb{width:210px;flex-shrink:0;background:var(--bg);border-right:0.5px solid var(--bd);display:flex;flex-direction:column}
 .sb-logo{padding:15px 14px 13px;display:flex;align-items:center;gap:9px;border-bottom:0.5px solid var(--bd)}
@@ -366,16 +371,51 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
             <div id="logo-prev"><i class="ti ti-photo" style="font-size:22px;color:var(--g400);display:block;margin-bottom:5px"></i><div style="font-size:12px;color:var(--tx3)">Upload logo (PNG, SVG, JPG)</div></div>
             <input type="file" id="logo-f" accept="image/*" style="display:none" onchange="hLogo(this)"/>
           </div>
-          <div class="fl" style="margin-bottom:8px">Brand colour</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-            <div class="cs sel" style="background:#185FA5" onclick="pCol('#185FA5',this)"></div>
-            <div class="cs" style="background:#1D9E75" onclick="pCol('#1D9E75',this)"></div>
-            <div class="cs" style="background:#D85A30" onclick="pCol('#D85A30',this)"></div>
-            <div class="cs" style="background:#D4537E" onclick="pCol('#D4537E',this)"></div>
-            <div class="cs" style="background:#7F77DD" onclick="pCol('#7F77DD',this)"></div>
-            <div class="cs" style="background:#BA7517" onclick="pCol('#BA7517',this)"></div>
-            <div class="cs" style="background:#444441" onclick="pCol('#444441',this)"></div>
-            <input type="color" value="#185FA5" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bdm);cursor:pointer;padding:0" onchange="pCol(this.value,null)"/>
+          <div class="fl" style="margin-bottom:8px">Brand colours</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">
+            <div>
+              <div style="font-size:10.5px;color:var(--tx3);margin-bottom:5px">Primary colour <span style="color:var(--tx2)">(headers, buttons, links)</span></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <div class="cs sel" id="pc-185FA5" style="background:#185FA5" onclick="pCol('primary','#185FA5',this)" title="Navy"></div>
+                <div class="cs" id="pc-1D9E75" style="background:#1D9E75" onclick="pCol('primary','#1D9E75',this)" title="Teal"></div>
+                <div class="cs" id="pc-D85A30" style="background:#D85A30" onclick="pCol('primary','#D85A30',this)" title="Coral"></div>
+                <div class="cs" id="pc-D4537E" style="background:#D4537E" onclick="pCol('primary','#D4537E',this)" title="Rose"></div>
+                <div class="cs" id="pc-7F77DD" style="background:#7F77DD" onclick="pCol('primary','#7F77DD',this)" title="Lavender"></div>
+                <div class="cs" id="pc-444441" style="background:#444441" onclick="pCol('primary','#444441',this)" title="Charcoal"></div>
+                <input type="color" id="primary-custom" value="#185FA5" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bdm);cursor:pointer;padding:0" title="Custom" onchange="pCol('primary',this.value,null)"/>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;color:var(--tx3);margin-bottom:5px">Secondary colour <span style="color:var(--tx2)">(accents, highlights)</span></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <div class="cs" id="sc-F7F6F3" style="background:#F7F6F3;border:1px solid var(--bdm)" onclick="pCol('secondary','#F7F6F3',this)" title="Warm white"></div>
+                <div class="cs" id="sc-E6F1FB" style="background:#E6F1FB" onclick="pCol('secondary','#E6F1FB',this)" title="Sky blue"></div>
+                <div class="cs" id="sc-E1F5EE" style="background:#E1F5EE" onclick="pCol('secondary','#E1F5EE',this)" title="Mint"></div>
+                <div class="cs" id="sc-FAEEDA" style="background:#FAEEDA" onclick="pCol('secondary','#FAEEDA',this)" title="Cream"></div>
+                <div class="cs" id="sc-FBEAF0" style="background:#FBEAF0" onclick="pCol('secondary','#FBEAF0',this)" title="Blush"></div>
+                <div class="cs" id="sc-EAF3DE" style="background:#EAF3DE" onclick="pCol('secondary','#EAF3DE',this)" title="Sage"></div>
+                <input type="color" id="secondary-custom" value="#E6F1FB" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bdm);cursor:pointer;padding:0" title="Custom" onchange="pCol('secondary',this.value,null)"/>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10.5px;color:var(--tx3);margin-bottom:5px">Accent colour <span style="color:var(--tx2)">(badges, tags, highlights)</span></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                <div class="cs" id="ac-EF9F27" style="background:#EF9F27" onclick="pCol('accent','#EF9F27',this)" title="Amber"></div>
+                <div class="cs" id="ac-1D9E75" style="background:#1D9E75" onclick="pCol('accent','#1D9E75',this)" title="Green"></div>
+                <div class="cs" id="ac-D85A30" style="background:#D85A30" onclick="pCol('accent','#D85A30',this)" title="Coral"></div>
+                <div class="cs" id="ac-7F77DD" style="background:#7F77DD" onclick="pCol('accent','#7F77DD',this)" title="Lavender"></div>
+                <div class="cs" id="ac-D4537E" style="background:#D4537E" onclick="pCol('accent','#D4537E',this)" title="Rose"></div>
+                <div class="cs" id="ac-185FA5" style="background:#185FA5" onclick="pCol('accent','#185FA5',this)" title="Navy"></div>
+                <input type="color" id="accent-custom" value="#EF9F27" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bdm);cursor:pointer;padding:0" title="Custom" onchange="pCol('accent',this.value,null)"/>
+              </div>
+            </div>
+          </div>
+          <div style="background:var(--bg3);border-radius:var(--r-md);padding:9px 11px;font-size:11.5px;color:var(--tx2);margin-bottom:12px;display:flex;gap:8px;align-items:center">
+            <span style="display:inline-flex;gap:5px;align-items:center">Active palette:</span>
+            <span id="pal-primary" style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#185FA5;border:1px solid rgba(0,0,0,.15)"></span>
+            <span id="pal-secondary" style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#E6F1FB;border:1px solid rgba(0,0,0,.15)"></span>
+            <span id="pal-accent" style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#EF9F27;border:1px solid rgba(0,0,0,.15)"></span>
+            <span style="color:var(--tx3);font-size:10.5px">Primary · Secondary · Accent</span>
           </div>
           <div class="fl" style="margin-bottom:8px">Email header preview</div>
           <div style="border:0.5px solid var(--bdm);border-radius:var(--r-md);overflow:hidden;margin-bottom:12px">
@@ -385,8 +425,17 @@ select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
             </div>
             <div style="padding:8px 14px;font-size:12px;color:var(--tx3)">Subject line preview &middot; Preview text</div>
           </div>
-          <div class="fl" style="margin-bottom:6px">Default font</div>
-          <select class="fi"><option>System default</option><option>Georgia (serif)</option><option>Trebuchet MS</option><option>Courier New (mono)</option></select>
+          <div class="fl" style="margin-bottom:6px">Fonts</div>
+          <div style="background:var(--bg3);border-radius:var(--r-md);padding:10px 12px;font-size:12.5px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+              <span style="color:var(--tx3);font-size:11px">Headers</span>
+              <span style="font-family:'Marcellus',Georgia,serif;font-size:15px">Marcellus</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="color:var(--tx3);font-size:11px">Body &amp; paragraphs</span>
+              <span style="font-family:'Montserrat',sans-serif;font-size:13px">Montserrat</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -497,7 +546,29 @@ function dzOv(e){e.preventDefault();document.getElementById('dz').classList.add(
 function dzLv(){document.getElementById('dz').classList.remove('over')}
 function dzDp(e){e.preventDefault();dzLv();const f=e.dataTransfer.files[0];if(f&&f.name.endsWith('.csv')){const i=document.getElementById('csv-f');const dt=new DataTransfer();dt.items.add(f);i.files=dt.files;hCSV(i)}else toast('Please drop a .csv file')}
 function hLogo(input){if(!input.files[0])return;const r=new FileReader();r.onload=e=>{logoUrl=e.target.result;document.getElementById('logo-prev').innerHTML=`<img src="${logoUrl}" style="max-height:52px;max-width:160px;object-fit:contain;border-radius:4px"/>`;document.getElementById('hp-lg').innerHTML=`<img src="${logoUrl}" style="height:22px;object-fit:contain"/>`;document.getElementById('hp-lg').style.background='transparent';document.getElementById('plb').innerHTML=`<img src="${logoUrl}" style="height:20px;object-fit:contain"/>`;document.getElementById('plb').style.background='transparent';toast('Logo uploaded!')};r.readAsDataURL(input.files[0])}
-function pCol(hex,el){document.querySelectorAll('.cs').forEach(s=>s.classList.remove('sel'));if(el)el.classList.add('sel');document.getElementById('hp-lg').style.background=logoUrl?'transparent':hex;document.getElementById('hp').style.borderBottomColor=hex;document.getElementById('plb').style.background=logoUrl?'transparent':hex;document.documentElement.style.setProperty('--blue',hex);toast('Brand colour updated!')}
+function pCol(role,hex,el){
+  // deselect swatches in this role's group
+  const prefix={primary:'pc-',secondary:'sc-',accent:'ac-'}[role];
+  document.querySelectorAll('[id^="'+prefix+'"]').forEach(s=>s.classList.remove('sel'));
+  if(el)el.classList.add('sel');
+  // update palette dots
+  document.getElementById('pal-'+role).style.background=hex;
+  if(role==='primary'){
+    document.documentElement.style.setProperty('--blue',hex);
+    // darken for hover — just use hex directly, CSS handles it
+    document.getElementById('hp-lg').style.background=logoUrl?'transparent':hex;
+    document.getElementById('hp').style.borderBottomColor=hex;
+    document.getElementById('plb').style.background=logoUrl?'transparent':hex;
+  }
+  if(role==='secondary'){
+    document.documentElement.style.setProperty('--blue-l',hex);
+  }
+  if(role==='accent'){
+    document.documentElement.style.setProperty('--green',hex);
+    document.documentElement.style.setProperty('--green-l',hex+'33');
+  }
+  toast(role.charAt(0).toUpperCase()+role.slice(1)+' colour updated!');
+}
 function liveSt(){
   const bz=document.getElementById('s-bz').value,si=document.getElementById('s-si').value,ad=document.getElementById('s-ad').value,nm=document.getElementById('s-nm').value;
   document.getElementById('fp-bz').textContent=bz;document.getElementById('fp-si').textContent=si;document.getElementById('fp-ad').textContent=ad;
